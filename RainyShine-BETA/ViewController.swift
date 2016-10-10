@@ -7,19 +7,54 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, CLLocationManagerDelegate {
+    
+    let location = Location()
+    let tableView = UITableView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didEnterBackground), name: NSNotification.Name(rawValue: "appEntersBackground"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didBecomeActive), name: NSNotification.Name(rawValue: "appBecomesActive"), object: nil)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //This makes sure the location request stays visible until the user
+        //chooses an option
+        beginUpdates()
     }
-
-
+    
+    //Application enters background
+    func didEnterBackground() {
+        location.stopUpdatingLocation()
+    }
+    
+    //Application enters foreground
+    func didBecomeActive() {
+        
+        //        print("\n\n\(location.locationUseApproval)\n\n")
+        if location.allowLocationUse {
+            beginUpdates()
+        }
+    }
+    
+    func beginUpdates() {
+        
+        location.requestCurrentLocation()
+        
+        //If location access is denied, ask to change setting or display failure
+        if CLLocationManager.authorizationStatus() == .denied {
+            self.present(location.alertController, animated: true, completion: nil)
+        } else {
+            //add update call here
+        }
+    }
+    
+    
 }
-
