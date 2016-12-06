@@ -8,74 +8,55 @@
 
 import Foundation
 import CoreLocation
-import UIKit
 
 class Location: CLLocationManager, CLLocationManagerDelegate {
     
+    enum locationStatus: Int {
+        case pending = 0, granted, denied
+    }
+    
     private let locationManager = CLLocationManager()
-    private var _currentLocation: CLLocation!
-    private var _allowLocationUse: Bool!
+    private var _currentLocation: CLLocationCoordinate2D!
+    private var _locationCall: locationStatus!
     
     
-    var currentLocation: CLLocation {
+    var currentLocation: CLLocationCoordinate2D {
         get {
             return _currentLocation
         }
     }
     
-    var allowLocationUse: Bool {
+    var locationCall: locationStatus {
         get {
-            return _allowLocationUse
+            return _locationCall
         }
     }
     
-    var alertController: UIAlertController!
-    
-    
-    func requestCurrentLocation() -> Void{
-        self._allowLocationUse = true
+    func requestCurrentLocation() -> Void {
+        self._locationCall = .granted
         
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             
             locationManager.startUpdatingLocation()
-            self._currentLocation = locationManager.location
+            self._currentLocation = locationManager.location?.coordinate
+//            print(self._currentLocation)
+            
         }else if CLLocationManager.authorizationStatus() == .denied {
             
-            alertController = UIAlertController(title: "Location Services Permission", message: "Please enable location services to determine the weather in your area.", preferredStyle: .actionSheet)
-            
-            //open setting to enable location services
-            let settingAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
-                let settingsUrl = URL(string: UIApplicationOpenSettingsURLString)
-                if let url = settingsUrl {
-                    if #available(iOS 10.0, *) {
-                        let options = [UIApplicationOpenURLOptionUniversalLinksOnly : false]
-                        UIApplication.shared.open(url, options: options, completionHandler: nil)
-                    } else {
-                        // Fallback on earlier versions
-                        UIApplication.shared.openURL(url)
-                    }
-                }
-            }
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (_) -> Void in
-                let segueView = ViewController()
-                segueView.performSegue(withIdentifier: "", sender: nil)
-            }
-            
-            alertController.addAction(settingAction)
-            alertController.addAction(cancelAction)
+            //if user declined to allow location use
+            self._locationCall = .denied
         }else {
             
             //request authorization to use phone's location
             locationManager.requestWhenInUseAuthorization()
-            requestCurrentLocation()
+            requestCurrentLocation() //function return is not needed in this call.
         }
     }
     
     override init() {
         super.init()
         
-        self._allowLocationUse = false
+        self._locationCall = .pending
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest

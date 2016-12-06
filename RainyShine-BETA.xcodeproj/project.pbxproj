@@ -15,7 +15,7 @@
 		761353A51DA305D300AE1325 /* RainyShine_BETATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761353A41DA305D300AE1325 /* RainyShine_BETATests.swift */; };
 		761353B01DA305D300AE1325 /* RainyShine_BETAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761353AF1DA305D300AE1325 /* RainyShine_BETAUITests.swift */; };
 		761353BE1DA3069E00AE1325 /* SharedConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761353BD1DA3069E00AE1325 /* SharedConnection.swift */; };
-		761353C01DA307A100AE1325 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761353BF1DA307A100AE1325 /* LocationManager.swift */; };
+		7663C4681DB7EEC800A5A9B9 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7663C4671DB7EEC800A5A9B9 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,7 @@
 		761353AF1DA305D300AE1325 /* RainyShine_BETAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RainyShine_BETAUITests.swift; sourceTree = "<group>"; };
 		761353B11DA305D300AE1325 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		761353BD1DA3069E00AE1325 /* SharedConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedConnection.swift; sourceTree = "<group>"; };
-		761353BF1DA307A100AE1325 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		7663C4671DB7EEC800A5A9B9 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				7613538F1DA305D300AE1325 /* AppDelegate.swift */,
-				761353BF1DA307A100AE1325 /* LocationManager.swift */,
+				7663C4671DB7EEC800A5A9B9 /* LocationManager.swift */,
 				761353BD1DA3069E00AE1325 /* SharedConnection.swift */,
 				761353911DA305D300AE1325 /* ViewController.swift */,
 				761353931DA305D300AE1325 /* Main.storyboard */,
@@ -285,7 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				761353C01DA307A100AE1325 /* LocationManager.swift in Sources */,
+				7663C4681DB7EEC800A5A9B9 /* LocationManager.swift in Sources */,
 				761353921DA305D300AE1325 /* ViewController.swift in Sources */,
 				761353901DA305D300AE1325 /* AppDelegate.swift in Sources */,
 				761353BE1DA3069E00AE1325 /* SharedConnection.swift in Sources */,

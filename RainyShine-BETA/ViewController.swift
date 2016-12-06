@@ -9,10 +9,16 @@
 import UIKit
 import CoreLocation
 
+
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     let location = Location()
     let tableView = UITableView()
+    var newConnection = SharedConnection()
+    
+    let apiKey = "93a4de0efba74dfeb43a460f21e50d6b"
+    
+    var alertController = UIAlertController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +31,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+//        DispatchQueue.main.async {
+//            <#code#>
+//        }
         //This makes sure the location request stays visible until the user
         //chooses an option
         beginUpdates()
@@ -38,9 +47,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     //Application enters foreground
     func didBecomeActive() {
         
-        //        print("\n\n\(location.locationUseApproval)\n\n")
-        if location.allowLocationUse {
-            beginUpdates()
+        //prevent this from runing the first time the progrm starts due to
+        //notification listeners
+        if location.locationCall == .granted {
+            
+            self.beginUpdates()
+            print("here!")
         }
     }
     
@@ -49,12 +61,37 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         location.requestCurrentLocation()
         
         //If location access is denied, ask to change setting or display failure
-        if CLLocationManager.authorizationStatus() == .denied {
-            self.present(location.alertController, animated: true, completion: nil)
+        if location.locationCall == .denied {
+            alertController = UIAlertController(title: "Location Services Permission", message: "Please enable location services to determine the weather in your area.", preferredStyle: .actionSheet)
+            
+            //open setting to enable location services
+            let settingAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                let settingsUrl = URL(string: UIApplicationOpenSettingsURLString)
+                if let url = settingsUrl {
+                    if #available(iOS 10.0, *) {
+                        let options = [UIApplicationOpenURLOptionUniversalLinksOnly : false]
+                        UIApplication.shared.open(url, options: options, completionHandler: nil)
+                    } else {
+                        // Fallback on earlier versions
+                        UIApplication.shared.openURL(url)
+                    }
+                }
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (_) -> Void in
+                
+                //Create default view
+                self.performSegue(withIdentifier: "unknownLocation", sender: self)
+//                self.present("vc2", animated: true, completion: nil)
+            }
+            
+            alertController.addAction(settingAction)
+            alertController.addAction(cancelAction)
+            
+            self.present(alertController, animated: true, completion: nil)
         } else {
             //add update call here
+            newConnection.dataTask(with: apiKey, andLocation: location.currentLocation)
         }
     }
-    
-    
 }

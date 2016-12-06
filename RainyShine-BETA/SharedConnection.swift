@@ -7,10 +7,14 @@
 //
 
 import Foundation
+import CoreLocation
 
 class SharedConnection {
+    var request: URL!
     
-    func dataTask(withURL request: URL) {
+    func dataTask(with apiKey: String, andLocation locData: CLLocationCoordinate2D) {
+        
+        request = URL(string: "https://api.darksky.net/forecast/\(apiKey)/\(locData.latitude),\(locData.longitude)") //DarkSky API
         
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request) {
@@ -19,14 +23,9 @@ class SharedConnection {
                 print(error!.localizedDescription)
             } else {
                 let result = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-                print(result as Any)
+                print(result! as Any)
             }
         }
             dataTask.resume()
-    }
-    
-    init(latitude lat: Double, longitude lon: Double, url resource: String, appID apikey: String) {
-        let weatherURL: URL = URL(string: "\(resource)&lat=\(lat)&lon=\(lon)&appid=\(apikey)")!
-        dataTask(withURL: weatherURL)
     }
 }
