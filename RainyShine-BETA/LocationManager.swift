@@ -12,7 +12,7 @@ import CoreLocation
 class Location: CLLocationManager, CLLocationManagerDelegate {
     
     enum locationStatus: Int {
-        case pending = 0, granted, denied
+        case pending, granted, denied
     }
     
     private let locationManager = CLLocationManager()

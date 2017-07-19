@@ -40,12 +40,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     //Application enters background
-    func didEnterBackground() {
+    @objc func didEnterBackground() {
         location.stopUpdatingLocation()
     }
     
     //Application enters foreground
-    func didBecomeActive() {
+    @objc func didBecomeActive() {
         
         //prevent this from runing the first time the progrm starts due to
         //notification listeners
