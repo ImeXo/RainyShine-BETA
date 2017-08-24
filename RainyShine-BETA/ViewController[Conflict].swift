@@ -12,7 +12,7 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
-    let myCurrentLocation = LocationManager()
+    let location = Location()
     let tableView = UITableView()
     var newConnection = SharedConnection()
     
@@ -24,7 +24,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 
-        // Listens for the app to enter the background or foreground and update accordningly.
         NotificationCenter.default.addObserver(self, selector: #selector(self.didEnterBackground), name: NSNotification.Name(rawValue: "appEntersBackground"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didBecomeActive), name: NSNotification.Name(rawValue: "appBecomesActive"), object: nil)
     }
@@ -37,32 +36,34 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 //        }
         //This makes sure the location request stays visible until the user
         //chooses an option
-        updateAndDisplayWeather()
+        beginUpdates()
     }
     
     //Application enters background
-    @objc func didEnterBackground() {
-        myCurrentLocation.stopUpdatingLocation()
+    func didEnterBackground() {
+        location.stopUpdatingLocation()
     }
     
     //Application enters foreground
-    @objc func didBecomeActive() {
+    func didBecomeActive() {
         
         //prevent this from runing the first time the progrm starts due to
         //notification listeners
-        if myCurrentLocation.getCurrentLocation == .granted {
+        if location.locationCalled {
             
-            self.updateAndDisplayWeather()
-            print("here!")
+            DispatchQueue.main.async {
+                self.beginUpdates()
+            }
+            
         }
     }
     
-    func updateAndDisplayWeather() {
+    func beginUpdates() {
         
-        myCurrentLocation.requestCurrentLocation()
+        location.requestCurrentLocation()
         
         //If location access is denied, ask to change setting or display failure
-        if myCurrentLocation.getCurrentLocation == .denied {
+        if CLLocationManager.authorizationStatus() == .denied {
             alertController = UIAlertController(title: "Location Services Permission", message: "Please enable location services to determine the weather in your area.", preferredStyle: .actionSheet)
             
             //open setting to enable location services
@@ -92,7 +93,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.present(alertController, animated: true, completion: nil)
         } else {
             //add update call here
-            newConnection.dataTask(with: apiKey, andLocation: myCurrentLocation.currentLocation)
+//            newConnection.dataTask(with: apiKey, andLocation: locationData!)
         }
     }
 }

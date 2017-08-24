@@ -8,55 +8,53 @@
 
 import Foundation
 import CoreLocation
+import UIKit
 
-class LocationManager: CLLocationManager, CLLocationManagerDelegate {
-    
-    enum locationStatus: Int {
-        case pending, granted, denied
-    }
+class Location: CLLocationManager, CLLocationManagerDelegate {
     
     private let locationManager = CLLocationManager()
-    private var _currentLocation: CLLocationCoordinate2D!
-    private var _getCurrentLocation: locationStatus!
+    private var _currentLocation: CLLocation!
+    private var _locationCalled: Bool!
     
     
-    var currentLocation: CLLocationCoordinate2D {
+    var currentLocation: CLLocation {
         get {
             return _currentLocation
         }
     }
     
-    var getCurrentLocation: locationStatus {
+    var locationCalled: Bool {
         get {
-            return _getCurrentLocation
+            return _locationCalled
         }
     }
     
-    func requestCurrentLocation() -> Void {
-        self._getCurrentLocation = .granted
+    var alertController: UIAlertController!
+    
+    
+    func requestCurrentLocation() -> Void{
+        self._locationCalled = true
         
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             
             locationManager.startUpdatingLocation()
-            self._currentLocation = locationManager.location?.coordinate
-//            print(self._currentLocation)
+            self._currentLocation = locationManager.location
+            print(self._currentLocation.coordinate)
             
         }else if CLLocationManager.authorizationStatus() == .denied {
-            
-            //if user declined to allow location use
-            self._getCurrentLocation = .denied
+            // code here
         }else {
             
             //request authorization to use phone's location
             locationManager.requestWhenInUseAuthorization()
-            requestCurrentLocation() //function return is not needed in this call.
+            requestCurrentLocation()
         }
     }
     
     override init() {
         super.init()
         
-        self._getCurrentLocation = .pending
+        self._locationCalled = false
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
