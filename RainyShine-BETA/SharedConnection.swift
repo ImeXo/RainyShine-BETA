@@ -11,10 +11,17 @@ import CoreLocation
 
 class SharedConnection {
     var request: URL!
+    var _weatherInJSONFormat: NSDictionary!
     
-    func dataTask(with apiKey: String, andLocation locData: CLLocationCoordinate2D) {
+    var weatherInJSONFormat: NSDictionary {
+        get {
+            return _weatherInJSONFormat
+        }
+    }
+    
+    func dataTask(with apiKey: String, andLocation locationData: CLLocationCoordinate2D) {
         
-        request = URL(string: "https://api.darksky.net/forecast/\(apiKey)/\(locData.latitude),\(locData.longitude)") //DarkSky API
+        request = URL(string: "https://api.darksky.net/forecast/\(apiKey)/\(locationData.latitude),\(locationData.longitude)") //DarkSky API
         
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request) {
@@ -22,10 +29,13 @@ class SharedConnection {
             if (error != nil) {
                 print(error!.localizedDescription)
             } else {
-                let result = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
-                print(result! as Any)
+                //let result = String(data: data!, encoding: String.Encoding.utf8) //The data can be converted to JSON without first becoming a String
+                do {
+                    self._weatherInJSONFormat = try? JSONSerialization.jsonObject(with: data!, options: []) as! NSDictionary
+                    print(self._weatherInJSONFormat as Any)
+                }
             }
         }
-            dataTask.resume()
+        dataTask.resume()
     }
 }
