@@ -12,7 +12,7 @@ import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
-    let location = Location()
+    let myCurrentLocation = Location()
     let tableView = UITableView()
     var newConnection = SharedConnection()
     
@@ -42,7 +42,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     //Application enters background
     @objc func didEnterBackground() {
-        location.stopUpdatingLocation()
+        myCurrentLocation.stopUpdatingLocation()
     }
     
     //Application enters foreground
@@ -50,7 +50,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         //prevent this from runing the first time the progrm starts due to
         //notification listeners
-        if location.locationCall == .granted {
+        if myCurrentLocation.getCurrentLocation == .granted {
             
             self.beginUpdates()
             print("here!")
@@ -59,10 +59,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     func beginUpdates() {
         
-        location.requestCurrentLocation()
+        myCurrentLocation.requestCurrentLocation()
         
         //If location access is denied, ask to change setting or display failure
-        if location.locationCall == .denied {
+        if myCurrentLocation.getCurrentLocation == .denied {
             alertController = UIAlertController(title: "Location Services Permission", message: "Please enable location services to determine the weather in your area.", preferredStyle: .actionSheet)
             
             //open setting to enable location services
@@ -92,7 +92,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.present(alertController, animated: true, completion: nil)
         } else {
             //add update call here
-            newConnection.dataTask(with: apiKey, andLocation: location.currentLocation)
+            newConnection.dataTask(with: apiKey, andLocation: myCurrentLocation.currentLocation)
         }
     }
 }

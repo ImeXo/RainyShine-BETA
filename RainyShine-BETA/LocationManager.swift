@@ -17,7 +17,7 @@ class Location: CLLocationManager, CLLocationManagerDelegate {
     
     private let locationManager = CLLocationManager()
     private var _currentLocation: CLLocationCoordinate2D!
-    private var _locationCall: locationStatus!
+    private var _getCurrentLocation: locationStatus!
     
     
     var currentLocation: CLLocationCoordinate2D {
@@ -26,14 +26,14 @@ class Location: CLLocationManager, CLLocationManagerDelegate {
         }
     }
     
-    var locationCall: locationStatus {
+    var getCurrentLocation: locationStatus {
         get {
-            return _locationCall
+            return _getCurrentLocation
         }
     }
     
     func requestCurrentLocation() -> Void {
-        self._locationCall = .granted
+        self._getCurrentLocation = .granted
         
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             
@@ -44,7 +44,7 @@ class Location: CLLocationManager, CLLocationManagerDelegate {
         }else if CLLocationManager.authorizationStatus() == .denied {
             
             //if user declined to allow location use
-            self._locationCall = .denied
+            self._getCurrentLocation = .denied
         }else {
             
             //request authorization to use phone's location
@@ -56,7 +56,7 @@ class Location: CLLocationManager, CLLocationManagerDelegate {
     override init() {
         super.init()
         
-        self._locationCall = .pending
+        self._getCurrentLocation = .pending
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
