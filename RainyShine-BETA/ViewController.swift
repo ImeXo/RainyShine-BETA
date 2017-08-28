@@ -9,13 +9,19 @@
 import UIKit
 import CoreLocation
 
-
 class ViewController: UIViewController, CLLocationManagerDelegate {
+    
+    enum appSettingStatus: Int {
+        case opened, pending
+    }
     
     let myCurrentLocation = LocationManager()
     let tableView = UITableView()
     var newConnection = SharedConnection()
+    var settingStatus: appSettingStatus = .pending
+    let timeLapseInfo = TimeLapse()
     
+    //Dark Sky API key
     let apiKey = "93a4de0efba74dfeb43a460f21e50d6b"
     
     var alertController = UIAlertController()
@@ -32,28 +38,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        DispatchQueue.main.async {
-//            <#code#>
-//        }
-        //This makes sure the location request stays visible until the user
-        //chooses an option
+        print("\n\nThis is the start of the app...\nStatus is: \(myCurrentLocation.getCurrentLocation)")
         updateAndDisplayWeather()
     }
     
     //Application enters background
     @objc func didEnterBackground() {
+        print("I'm sleepy\n")
         myCurrentLocation.stopUpdatingLocation()
     }
     
     //Application enters foreground
     @objc func didBecomeActive() {
         
-        //prevent this from runing the first time the progrm starts due to
-        //notification listeners
-        if myCurrentLocation.getCurrentLocation == .granted {
-            
+        //This calls an update after user returns from the Settings app.
+        timeLapseInfo.endTimeLapse()
+        if settingStatus == .opened {
             self.updateAndDisplayWeather()
-            print("here!")
         }
     }
     
@@ -76,6 +77,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         // Fallback on earlier versions
                         UIApplication.shared.openURL(url)
                     }
+                    self.settingStatus = .opened
                 }
             }
             
@@ -92,7 +94,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.present(alertController, animated: true, completion: nil)
         } else {
             //add update call here
-            newConnection.dataTask(with: apiKey, andLocation: myCurrentLocation.currentLocation)
+            newConnection.downloadWeatherData(with: apiKey, andGPSLocation: myCurrentLocation.currentLocation)
+            timeLapseInfo.startTimeLapse() //Used to prevent too many calls from happening frequently
         }
     }
 }

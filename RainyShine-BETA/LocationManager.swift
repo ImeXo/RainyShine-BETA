@@ -39,7 +39,7 @@ class LocationManager: CLLocationManager, CLLocationManagerDelegate {
             
             locationManager.startUpdatingLocation()
             self._currentLocation = locationManager.location?.coordinate
-//            print(self._currentLocation)
+            print(self._currentLocation)
             
         }else if CLLocationManager.authorizationStatus() == .denied {
             

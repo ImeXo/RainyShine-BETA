@@ -17,6 +17,7 @@
 		761353BE1DA3069E00AE1325 /* SharedConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761353BD1DA3069E00AE1325 /* SharedConnection.swift */; };
 		7663C4681DB7EEC800A5A9B9 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7663C4671DB7EEC800A5A9B9 /* LocationManager.swift */; };
 		7666E14D1F4F1FCB00BB9AB9 /* DisplayWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7666E14C1F4F1FCB00BB9AB9 /* DisplayWeather.swift */; };
+		76DCB5321F5484D000FF2E04 /* TimeLapse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DCB5311F5484D000FF2E04 /* TimeLapse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		761353BD1DA3069E00AE1325 /* SharedConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedConnection.swift; sourceTree = "<group>"; };
 		7663C4671DB7EEC800A5A9B9 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		7666E14C1F4F1FCB00BB9AB9 /* DisplayWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayWeather.swift; sourceTree = "<group>"; };
+		76DCB5311F5484D000FF2E04 /* TimeLapse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLapse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				7663C4671DB7EEC800A5A9B9 /* LocationManager.swift */,
 				761353BD1DA3069E00AE1325 /* SharedConnection.swift */,
 				761353911DA305D300AE1325 /* ViewController.swift */,
+				76DCB5311F5484D000FF2E04 /* TimeLapse.swift */,
 				761353931DA305D300AE1325 /* Main.storyboard */,
 				761353961DA305D300AE1325 /* Assets.xcassets */,
 				761353981DA305D300AE1325 /* LaunchScreen.storyboard */,
@@ -291,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76DCB5321F5484D000FF2E04 /* TimeLapse.swift in Sources */,
 				7663C4681DB7EEC800A5A9B9 /* LocationManager.swift in Sources */,
 				7666E14D1F4F1FCB00BB9AB9 /* DisplayWeather.swift in Sources */,
 				761353921DA305D300AE1325 /* ViewController.swift in Sources */,

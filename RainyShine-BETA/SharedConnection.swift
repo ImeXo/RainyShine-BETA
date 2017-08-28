@@ -19,12 +19,12 @@ class SharedConnection {
         }
     }
     
-    func dataTask(with apiKey: String, andLocation locationData: CLLocationCoordinate2D) {
+    func downloadWeatherData(with apiKey: String, andGPSLocation locationData: CLLocationCoordinate2D) {
         
         request = URL(string: "https://api.darksky.net/forecast/\(apiKey)/\(locationData.latitude),\(locationData.longitude)") //DarkSky API
         
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request) {
+        let newSession = URLSession.shared
+        let downloadData = newSession.dataTask(with: request) {
             (data, response, error) in
             if (error != nil) {
                 print(error!.localizedDescription)
@@ -32,10 +32,10 @@ class SharedConnection {
                 //let result = String(data: data!, encoding: String.Encoding.utf8) //The data can be converted to JSON without first becoming a String
                 do {
                     self._weatherDetails = try? JSONSerialization.jsonObject(with: data!, options: []) as! NSDictionary
-                    print(self._weatherDetails as Any)
+//                    print(self._weatherDetails as Any)
                 }
             }
         }
-        dataTask.resume()
+        downloadData.resume()
     }
 }
