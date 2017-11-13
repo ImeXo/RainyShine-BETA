@@ -18,6 +18,6 @@ class TimeLapse {
     }
     func endTimeLapse() {
         endTrackingTimeSinceUpdate = NSDate().timeIntervalSinceReferenceDate
-        print(endTrackingTimeSinceUpdate-startTrackingTimeSinceUpdate)
+        print("\(endTrackingTimeSinceUpdate-startTrackingTimeSinceUpdate) :: \(startTrackingTimeSinceUpdate)")
     }
 }

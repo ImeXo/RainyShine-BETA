@@ -32,6 +32,7 @@ class LocationManager: CLLocationManager, CLLocationManagerDelegate {
         }
     }
     
+    
     func requestCurrentLocation() -> Void {
         self._getCurrentLocation = .granted
         
@@ -39,7 +40,7 @@ class LocationManager: CLLocationManager, CLLocationManagerDelegate {
             
             locationManager.startUpdatingLocation()
             self._currentLocation = locationManager.location?.coordinate
-            print(self._currentLocation)
+            //print(self._currentLocation)
             
         }else if CLLocationManager.authorizationStatus() == .denied {
             
@@ -47,18 +48,29 @@ class LocationManager: CLLocationManager, CLLocationManagerDelegate {
             self._getCurrentLocation = .denied
         }else {
             
-            //request authorization to use phone's location
+            //request authorization to use phone's GPS location
             locationManager.requestWhenInUseAuthorization()
             requestCurrentLocation() //function return is not needed in this call.
         }
     }
     
+    //remove redundant code from init functions
+    func initConfig() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+    }
+    
     override init() {
         super.init()
         
-        self._getCurrentLocation = .pending
+        self._getCurrentLocation = nil
+        initConfig()
+    }
+    
+    init(statusIs status: locationStatus) {
+        super.init()
         
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self._getCurrentLocation = status
+        initConfig()
     }
 }

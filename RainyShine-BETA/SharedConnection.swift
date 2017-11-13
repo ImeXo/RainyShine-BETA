@@ -19,7 +19,7 @@ class SharedConnection {
         }
     }
     
-    func downloadWeatherData(with apiKey: String, andGPSLocation locationData: CLLocationCoordinate2D) {
+    func downloadWeatherData(withKey apiKey: String, andGPSLocation locationData: CLLocationCoordinate2D) {
         
         request = URL(string: "https://api.darksky.net/forecast/\(apiKey)/\(locationData.latitude),\(locationData.longitude)") //DarkSky API
         
