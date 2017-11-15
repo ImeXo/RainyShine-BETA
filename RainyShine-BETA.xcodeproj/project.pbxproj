@@ -17,6 +17,8 @@
 		761353BE1DA3069E00AE1325 /* SharedConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761353BD1DA3069E00AE1325 /* SharedConnection.swift */; };
 		7663C4681DB7EEC800A5A9B9 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7663C4671DB7EEC800A5A9B9 /* LocationManager.swift */; };
 		7666E14D1F4F1FCB00BB9AB9 /* DisplayWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7666E14C1F4F1FCB00BB9AB9 /* DisplayWeather.swift */; };
+		768E0D1E1FBA187E00F3D042 /* InfoPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E0D1D1FBA187E00F3D042 /* InfoPlist.swift */; };
+		768E0D201FBC82FC00F3D042 /* APIKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 768E0D1F1FBC82FC00F3D042 /* APIKey.plist */; };
 		76DCB5321F5484D000FF2E04 /* TimeLapse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DCB5311F5484D000FF2E04 /* TimeLapse.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,8 @@
 		761353BD1DA3069E00AE1325 /* SharedConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedConnection.swift; sourceTree = "<group>"; };
 		7663C4671DB7EEC800A5A9B9 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		7666E14C1F4F1FCB00BB9AB9 /* DisplayWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayWeather.swift; sourceTree = "<group>"; };
+		768E0D1D1FBA187E00F3D042 /* InfoPlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlist.swift; sourceTree = "<group>"; };
+		768E0D1F1FBC82FC00F3D042 /* APIKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKey.plist; sourceTree = "<group>"; };
 		76DCB5311F5484D000FF2E04 /* TimeLapse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLapse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +111,7 @@
 			children = (
 				7613538F1DA305D300AE1325 /* AppDelegate.swift */,
 				7666E14C1F4F1FCB00BB9AB9 /* DisplayWeather.swift */,
+				768E0D1D1FBA187E00F3D042 /* InfoPlist.swift */,
 				7663C4671DB7EEC800A5A9B9 /* LocationManager.swift */,
 				761353BD1DA3069E00AE1325 /* SharedConnection.swift */,
 				761353911DA305D300AE1325 /* ViewController.swift */,
@@ -115,6 +120,7 @@
 				761353961DA305D300AE1325 /* Assets.xcassets */,
 				761353981DA305D300AE1325 /* LaunchScreen.storyboard */,
 				7613539B1DA305D300AE1325 /* Info.plist */,
+				768E0D1F1FBC82FC00F3D042 /* APIKey.plist */,
 			);
 			path = "RainyShine-BETA";
 			sourceTree = "<group>";
@@ -252,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7613539A1DA305D300AE1325 /* LaunchScreen.storyboard in Resources */,
+				768E0D201FBC82FC00F3D042 /* APIKey.plist in Resources */,
 				761353971DA305D300AE1325 /* Assets.xcassets in Resources */,
 				761353951DA305D300AE1325 /* Main.storyboard in Resources */,
 			);
@@ -300,6 +307,7 @@
 				761353921DA305D300AE1325 /* ViewController.swift in Sources */,
 				761353901DA305D300AE1325 /* AppDelegate.swift in Sources */,
 				761353BE1DA3069E00AE1325 /* SharedConnection.swift in Sources */,
+				768E0D1E1FBA187E00F3D042 /* InfoPlist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

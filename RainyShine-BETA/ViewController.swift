@@ -12,27 +12,25 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
     enum appSettingStatus: Int {
-        case opened, pending
+        case granted, pending
     }
+    
+    var plistData = InfoPlist(withName: "APIKey")
+    var newConnection = SharedConnection()
+    var settingStatus: appSettingStatus = .pending
+    var alertController = UIAlertController()
     
     let myCurrentLocation = LocationManager(statusIs: .pending)
     let tableView = UITableView()
-    var newConnection = SharedConnection()
-    var settingStatus: appSettingStatus = .pending
     let timeLapseInfo = TimeLapse()
     
     //get the application name
-    let appName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
-    
-    //Dark Sky API key
-    let apiKey = "93a4de0efba74dfeb43a460f21e50d6b"
-    
-    var alertController = UIAlertController()
+    let applicationName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
+        
         // Listens for the app to enter the background or foreground and update accordningly.
         NotificationCenter.default.addObserver(self, selector: #selector(self.didEnterBackground), name: NSNotification.Name(rawValue: "appEntersBackground"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didBecomeActive), name: NSNotification.Name(rawValue: "appBecomesActive"), object: nil)
@@ -41,24 +39,24 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        print("\n\nThis is the start of the app...\nStatus is: \(myCurrentLocation.getCurrentLocation)")
-        print(appName)
+        print(applicationName)
         updateAndDisplayWeather()
     }
     
     //Application enters background
     @objc func didEnterBackground() {
-        print("I'm sleepy\n")
         myCurrentLocation.stopUpdatingLocation()
     }
     
     //Application enters foreground
     @objc func didBecomeActive() {
         
-        //This calls an update after user returns from the Settings app.
         timeLapseInfo.endTimeLapse()
-        if settingStatus == .opened {
-            //self.updateAndDisplayWeather()
+        
+        //This calls an update after user returns from the Settings app.
+        if settingStatus == .granted {
+            settingStatus = .pending
+            self.updateAndDisplayWeather()
         }
     }
     
@@ -70,7 +68,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         //If access to the phone's location is denied, ask to change setting or display failure
         if myCurrentLocation.getCurrentLocation == .denied {
-            alertController = UIAlertController(title: "Location Services Permission", message: "\(appName) uses GPS to provide accurate weather in your area. Please enable location service to continue.", preferredStyle: .actionSheet)
+            alertController = UIAlertController(title: "Location Services Permission", message: "\(applicationName) uses GPS to provide accurate weather in your area. Please enable location service to continue.", preferredStyle: .actionSheet)
             
             //open setting to enable location services
             let settingAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
@@ -83,7 +81,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         // Fallback on earlier versions
                         UIApplication.shared.openURL(url)
                     }
-                    self.settingStatus = .opened
+                    self.settingStatus = .granted
                 }
             }
             
@@ -100,7 +98,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.present(alertController, animated: true, completion: nil)
         } else {
             //add update call here
-            newConnection.downloadWeatherData(withKey: apiKey, andGPSLocation: myCurrentLocation.currentLocation)
+//            newConnection.downloadWeatherData(withKey: apiKey, andGPSLocation: myCurrentLocation.currentLocation)
             timeLapseInfo.startTimeLapse() //Used to prevent too many calls from happening frequently
         }
     }

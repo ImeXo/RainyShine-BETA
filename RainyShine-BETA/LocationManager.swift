@@ -54,6 +54,7 @@ class LocationManager: CLLocationManager, CLLocationManagerDelegate {
         }
     }
     
+    
     //remove redundant code from init functions
     func initConfig() {
         locationManager.delegate = self

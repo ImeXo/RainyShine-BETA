@@ -11,6 +11,7 @@ import CoreLocation
 
 class SharedConnection {
     var request: URL!
+    
     var _weatherDetails: NSDictionary!
     
     var weatherDetails: NSDictionary {
@@ -33,6 +34,7 @@ class SharedConnection {
                 do {
                     self._weatherDetails = try? JSONSerialization.jsonObject(with: data!, options: []) as! NSDictionary
 //                    print(self._weatherDetails as Any)
+                    print("Data downloaded; ready to parse information and display weather!")
                 }
             }
         }
