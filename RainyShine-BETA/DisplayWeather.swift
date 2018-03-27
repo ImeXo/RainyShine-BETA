@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class DisplayWeather {
     
     private var _jsonDictionary: NSDictionary = [:]

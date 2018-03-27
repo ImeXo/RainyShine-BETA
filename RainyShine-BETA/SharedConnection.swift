@@ -10,9 +10,9 @@ import Foundation
 import CoreLocation
 
 class SharedConnection {
-    var request: URL!
     
-    var _weatherDetails: NSDictionary!
+    private var request: URL!
+    private var _weatherDetails: NSDictionary!
     
     var weatherDetails: NSDictionary {
         get {
@@ -32,7 +32,7 @@ class SharedConnection {
             } else {
                 //let result = String(data: data!, encoding: String.Encoding.utf8) //The data can be converted to JSON without first becoming a String
                 do {
-                    self._weatherDetails = try? JSONSerialization.jsonObject(with: data!, options: []) as! NSDictionary
+                    self._weatherDetails = try! JSONSerialization.jsonObject(with: data!, options: []) as! NSDictionary
 //                    print(self._weatherDetails as Any)
                     print("Data downloaded; ready to parse information and display weather!")
                 }

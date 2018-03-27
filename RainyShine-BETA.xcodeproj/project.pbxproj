@@ -471,6 +471,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 2GXZ8LWDMV;
 				INFOPLIST_FILE = "RainyShine-BETA/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -486,6 +487,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = 2GXZ8LWDMV;
 				INFOPLIST_FILE = "RainyShine-BETA/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;

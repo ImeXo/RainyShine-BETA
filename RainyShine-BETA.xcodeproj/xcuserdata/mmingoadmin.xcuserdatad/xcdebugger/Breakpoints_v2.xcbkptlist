@@ -2,4 +2,100 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RainyShine-BETA/SharedConnection.swift"
+            timestampString = "537996893.642766"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "weatherDetails"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RainyShine-BETA/ViewController.swift"
+            timestampString = "537996938.183363"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RainyShine_BETA.ViewController.(plistData in _9E70D1506E3269AC6BF03E86A15D4CCC).getter : RainyShine_BETA.InfoPlist"
+                  moduleName = "RainyShine-BETA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mmingoadmin/Google%20Drive/iOS%20Files/test_apps/RainyShine-BETA/RainyShine-BETA/ViewController.swift"
+                  timestampString = "537996938.2994"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "105">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RainyShine_BETA.ViewController.(plistData in _9E70D1506E3269AC6BF03E86A15D4CCC).setter : RainyShine_BETA.InfoPlist"
+                  moduleName = "RainyShine-BETA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mmingoadmin/Google%20Drive/iOS%20Files/test_apps/RainyShine-BETA/RainyShine-BETA/ViewController.swift"
+                  timestampString = "537996938.301957"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "110">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RainyShine_BETA.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; RainyShine_BETA.ViewController"
+                  moduleName = "RainyShine-BETA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mmingoadmin/Google%20Drive/iOS%20Files/test_apps/RainyShine-BETA/RainyShine-BETA/ViewController.swift"
+                  timestampString = "537996938.3043391"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "46">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RainyShine_BETA.ViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;RainyShine_BETA.ViewController&gt;"
+                  moduleName = "RainyShine-BETA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mmingoadmin/Google%20Drive/iOS%20Files/test_apps/RainyShine-BETA/RainyShine-BETA/ViewController.swift"
+                  timestampString = "537996938.3067141"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "21">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

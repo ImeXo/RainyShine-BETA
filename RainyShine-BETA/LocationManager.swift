@@ -56,7 +56,7 @@ class LocationManager: CLLocationManager, CLLocationManagerDelegate {
     
     
     //remove redundant code from init functions
-    func initConfig() {
+    private func initConfig() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }

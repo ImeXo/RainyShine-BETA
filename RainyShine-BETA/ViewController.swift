@@ -15,7 +15,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         case granted, pending
     }
     
-    var plistData = InfoPlist(withName: "APIKey")
+    private var plistData = InfoPlist(withName: "APIKey")
     var newConnection = SharedConnection()
     var settingStatus: appSettingStatus = .pending
     var alertController = UIAlertController()
@@ -62,7 +62,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     
     //Start gathering weather data from online if needed and display the updated data
-    func updateAndDisplayWeather() {
+    private func updateAndDisplayWeather() {
         
         myCurrentLocation.requestCurrentLocation() //request location data from the phone and store it
         
@@ -98,8 +98,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.present(alertController, animated: true, completion: nil)
         } else {
             //add update call here
-//            newConnection.downloadWeatherData(withKey: apiKey, andGPSLocation: myCurrentLocation.currentLocation)
-            timeLapseInfo.startTimeLapse() //Used to prevent too many calls from happening frequently
+            newConnection.downloadWeatherData(withKey: plistData.apiKey, andGPSLocation: myCurrentLocation.currentLocation)
+//            print(newConnection.weatherDetails)
+            timeLapseInfo.startTimeLapse() //Used to prevent too many calls from happening
         }
     }
 }

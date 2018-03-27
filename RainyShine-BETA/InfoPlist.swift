@@ -8,12 +8,10 @@
 
 import Foundation
 
-
 class InfoPlist {
     
     private var plistData: NSDictionary!
-    private var test = [String: Data]()
-    var APIKey: String = ""
+    var apiKey: String = ""
     
     private func getInfo(fromPlist plist: String){
         
@@ -24,12 +22,12 @@ class InfoPlist {
         
         //parse dictionary info and converts the Data to a String
         let stringData = String(data: plistData!["APIKey"]! as! Data, encoding: String.Encoding.utf8)
-        APIKey = stringData!
+        apiKey = stringData!
     }
     
     
     init(){
-        getInfo(fromPlist: "Info")
+        getInfo(fromPlist: "Info") //default is Info.plist
     }
     
     init(withName name: String) {
