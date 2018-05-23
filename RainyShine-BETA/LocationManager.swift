@@ -44,7 +44,7 @@ class LocationManager: CLLocationManager, CLLocationManagerDelegate {
             
         }else if CLLocationManager.authorizationStatus() == .denied {
             
-            //if user declined to allow location use
+            //if user declined to allow location use on their phone
             self._getCurrentLocation = .denied
         }else {
             
@@ -56,7 +56,7 @@ class LocationManager: CLLocationManager, CLLocationManagerDelegate {
     
     
     //remove redundant code from init functions
-    private func initConfig() {
+    private func initialConfig() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
@@ -65,13 +65,13 @@ class LocationManager: CLLocationManager, CLLocationManagerDelegate {
         super.init()
         
         self._getCurrentLocation = nil
-        initConfig()
+        initialConfig()
     }
     
     init(statusIs status: locationStatus) {
         super.init()
         
         self._getCurrentLocation = status
-        initConfig()
+        initialConfig()
     }
 }

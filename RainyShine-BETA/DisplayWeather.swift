@@ -6,7 +6,7 @@
 //  Copyright © 2017 Mingo, Marlon (Admin). All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class DisplayWeather {
     
@@ -18,6 +18,9 @@ class DisplayWeather {
     private var _currentTemp: Double!
     private var _lowTemp: Double!
     private var _highTemp: Double!
+    
+    @IBOutlet weak var weatherTypeTes: UITextField!
+    @IBOutlet weak var currentTempTest: UITextField!
     
     var cityName: String {
         if _cityName == nil {

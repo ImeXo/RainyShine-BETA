@@ -9,20 +9,19 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, CLLocationManagerDelegate, SharedConnectionDelegate {
     
     enum appSettingStatus: Int {
         case granted, pending
     }
     
-    private var plistData = InfoPlist(withName: "APIKey")
+    private let plistData = InfoPlist(withName: "APIKey")
     var newConnection = SharedConnection()
     var settingStatus: appSettingStatus = .pending
     var alertController = UIAlertController()
     
     let myCurrentLocation = LocationManager(statusIs: .pending)
     let tableView = UITableView()
-    let timeLapseInfo = TimeLapse()
     
     //get the application name
     let applicationName = Bundle.main.infoDictionary![kCFBundleNameKey as String] as! String
@@ -30,6 +29,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        newConnection.delegate = self
         
         // Listens for the app to enter the background or foreground and update accordningly.
         NotificationCenter.default.addObserver(self, selector: #selector(self.didEnterBackground), name: NSNotification.Name(rawValue: "appEntersBackground"), object: nil)
@@ -50,8 +51,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     //Application enters foreground
     @objc func didBecomeActive() {
-        
-        timeLapseInfo.endTimeLapse()
         
         //This calls an update after user returns from the Settings app.
         if settingStatus == .granted {
@@ -97,10 +96,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             
             self.present(alertController, animated: true, completion: nil)
         } else {
-            //add update call here
+            //This starts theweather data download
             newConnection.downloadWeatherData(withKey: plistData.apiKey, andGPSLocation: myCurrentLocation.currentLocation)
-//            print(newConnection.weatherDetails)
-            timeLapseInfo.startTimeLapse() //Used to prevent too many calls from happening
         }
+    }
+    
+    //Waits for data to be downloading before printing it out
+    func downloadIsComplete(_ sender: SharedConnection) {
+        print(newConnection.weatherDetails)
     }
 }

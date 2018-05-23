@@ -20,6 +20,7 @@
 		768E0D1E1FBA187E00F3D042 /* InfoPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768E0D1D1FBA187E00F3D042 /* InfoPlist.swift */; };
 		768E0D201FBC82FC00F3D042 /* APIKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 768E0D1F1FBC82FC00F3D042 /* APIKey.plist */; };
 		76DCB5321F5484D000FF2E04 /* TimeLapse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DCB5311F5484D000FF2E04 /* TimeLapse.swift */; };
+		F22BE4CB20B4EBEF005E76C1 /* SharedConnectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F22BE4CA20B4EBEF005E76C1 /* SharedConnectionDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		768E0D1D1FBA187E00F3D042 /* InfoPlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPlist.swift; sourceTree = "<group>"; };
 		768E0D1F1FBC82FC00F3D042 /* APIKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKey.plist; sourceTree = "<group>"; };
 		76DCB5311F5484D000FF2E04 /* TimeLapse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLapse.swift; sourceTree = "<group>"; };
+		F22BE4CA20B4EBEF005E76C1 /* SharedConnectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedConnectionDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				768E0D1D1FBA187E00F3D042 /* InfoPlist.swift */,
 				7663C4671DB7EEC800A5A9B9 /* LocationManager.swift */,
 				761353BD1DA3069E00AE1325 /* SharedConnection.swift */,
+				F22BE4CA20B4EBEF005E76C1 /* SharedConnectionDelegate.swift */,
 				761353911DA305D300AE1325 /* ViewController.swift */,
 				76DCB5311F5484D000FF2E04 /* TimeLapse.swift */,
 				761353931DA305D300AE1325 /* Main.storyboard */,
@@ -207,7 +210,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Mingo, Marlon (Admin)";
 				TargetAttributes = {
 					7613538B1DA305D300AE1325 = {
@@ -304,6 +307,7 @@
 				76DCB5321F5484D000FF2E04 /* TimeLapse.swift in Sources */,
 				7663C4681DB7EEC800A5A9B9 /* LocationManager.swift in Sources */,
 				7666E14D1F4F1FCB00BB9AB9 /* DisplayWeather.swift in Sources */,
+				F22BE4CB20B4EBEF005E76C1 /* SharedConnectionDelegate.swift in Sources */,
 				761353921DA305D300AE1325 /* ViewController.swift in Sources */,
 				761353901DA305D300AE1325 /* AppDelegate.swift in Sources */,
 				761353BE1DA3069E00AE1325 /* SharedConnection.swift in Sources */,
@@ -375,6 +379,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -382,6 +387,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -431,6 +437,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -438,6 +445,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

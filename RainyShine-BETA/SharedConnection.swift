@@ -6,17 +6,18 @@
 //  Copyright © 2016 Marlon Mingo. All rights reserved.
 //
 
-import Foundation
+//import Foundation
 import CoreLocation
 
 class SharedConnection {
     
     private var request: URL!
-    private var _weatherDetails: NSDictionary!
+    private var _weatherDetails: NSDictionary?
     
+    var delegate: SharedConnectionDelegate?
     var weatherDetails: NSDictionary {
         get {
-            return _weatherDetails
+            return _weatherDetails!
         }
     }
     
@@ -35,9 +36,15 @@ class SharedConnection {
                     self._weatherDetails = try! JSONSerialization.jsonObject(with: data!, options: []) as! NSDictionary
 //                    print(self._weatherDetails as Any)
                     print("Data downloaded; ready to parse information and display weather!")
+                    self.dataDownloaded()
                 }
             }
         }
         downloadData.resume()
+    }
+    
+    //Calls delegate
+    func dataDownloaded(){
+        delegate?.downloadIsComplete(self)
     }
 }
